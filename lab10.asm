@@ -7,8 +7,7 @@ section .text
 	global main              ; main and _start are both valid entry points
 	extern printf, scanf     ; these will be linked in from glibc 
 main:
-	; prologue
-	push    rbp          ; save base pointer to the stack
+	push    rbp          ; prolouge save base pointer to the stack
 	mov     rbp, rsp     ; base pointer = stack pointer 
 	sub     rsp, 80      ; make room for integers on the stack
 	push    rbx          ; push callee saved registers onto the stack 
@@ -17,80 +16,70 @@ main:
 	push    r14
 	push    r15
 	pushfq               ; push register flags onto the stack
-	; prompt for first integer 
-	mov    rdi, dword prompt1    ; double word is 4 bytes; a word is 2 bytes
+	mov    rdi, dword prompt1    ; promp for first int double word is 4 bytes; a word is 2 bytes
 	xor    rax, rax              ; rax is return value register - zero it out
 	call   printf                ; call the C function from glibc 
 	lea    rsi, [rbp-8]          ; load effective address - this instruction
 	mov    rdi, dword num_format ; load rdi with address to format string
 	xor    rax, rax              ; zero out return value register
 	call   scanf                 ; call C function
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-16]         ; read number 
 	mov    rdi, dword num_format
 	xor    rax, rax
 	call   scanf
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-24]         ; read number 
 	mov    rdi, dword num_format
 	xor    rax, rax
 	call   scanf
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-32]         ; read number 
 	mov    rdi, dword num_format
 	xor    rax, rax
 	call   scanf
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-40]         ; read number 
 	mov    rdi, dword num_format
 	xor    rax, rax
 	call   scanf
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-48]         ; read number 
 	mov    rdi, dword num_format
 	xor    rax, rax
 	call   scanf
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-56]         ; read number 
 	mov    rdi, dword num_format
 	xor    rax, rax
 	call   scanf
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-64]         ; read number 
 	mov    rdi, dword num_format
 	xor    rax, rax
 	call   scanf
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-72]         ; read number 
 	mov    rdi, dword num_format
 	xor    rax, rax
 	call   scanf
-	; prompt for other integer
-	mov    rdi, dword prompt1
+	mov    rdi, dword prompt1    ; promp for int
 	xor    rax, rax
 	call   printf
 	lea    rsi, [rbp-80]         ; read number 
